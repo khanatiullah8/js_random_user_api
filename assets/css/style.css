@@ -1,0 +1,328 @@
+@charset "utf-8";
+/* ==========================================================================
+   1. CSS Reset Code
+   ========================================================================== */
+
+/* 1.1. Eric Meyers Reset
+   http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+   ========================================================================== */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
+blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img,
+ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center,
+dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody,
+tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure,
+figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* Force scrollbar */
+html { overflow-y: scroll; }
+
+/* Align radios and text inputs with their label */
+
+input[type='radio'] { vertical-align: text-bottom; }
+
+/* Hand cursor on clickable input elements */
+label,
+input[type='button'],
+input[type='submit'],
+button {
+  cursor: pointer;
+}
+
+strong {
+  font-weight: bold;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+em { font-style: italic; }
+
+img {
+  width: 100%;
+  border: 0;
+  vertical-align: middle;
+}
+
+sub,
+sup {
+  vertical-align: baseline;
+  position: relative;
+  font-size: 55%;
+  line-height: 0;
+}
+
+sup { top: -.7em; }
+sub { bottom: -.25em; }
+
+/* 1.2. Clear Fix
+   ========================== */
+
+.cf:before,
+.cf:after {
+  display: table;
+  content: " ";
+}
+
+.cf:after { clear: both; }
+.cf { *zoom: 1; }
+
+/*for all*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+a { 
+  display: inline-block;
+  text-decoration: none; 
+}
+
+li {
+  display: inline-block;
+  list-style-type: none;
+}
+
+span { display: inline-block; }
+
+/*for wrapper*/
+.wrapper {
+  max-width: 1366px;
+  width: 90%; 
+  margin: 0 auto;
+}
+/*=================================
+  Header styling starts here
+=================================*/
+
+.header__wrapper {
+  width: 100%;
+  padding: 10px 5%;
+  background-color: #333;
+}
+
+.header__heading {
+  color: #ccc;
+  font-size: 26px;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/*=================================
+  Header styling ends here
+=================================*/  
+
+/*=================================
+  main styling starts here
+=================================*/
+
+.users__wrapper {
+  min-height: 90vh;
+  padding: 50px 0;
+}
+
+.users__lists {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.users__lists--item {
+  padding: 10px;
+  border: 1px solid #444;
+  border-radius: 5px;
+  flex: 1 0 100%;
+  display: flex;
+}
+
+.user__img {
+  flex-shrink: 0;
+}
+
+.user__details {
+  padding: 0 0 0 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* custom select box start */
+
+.select__body {
+  display: flex;
+  position: relative;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.selected__box {
+  width: 100%;
+  padding: 10px 30px 10px 10px;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+  background-color: #333;
+  color: #ddd;
+  cursor: pointer;
+}
+
+.selected__box::before,
+.selected__box::after {
+  content: '';
+  border: 9px solid transparent;
+  position: absolute;
+  right: 8px;
+  z-index: 1;
+  transition: all .3s;
+}
+
+.selected__box::before {
+  border-bottom-color: #fff;
+  top: 0;
+}
+
+.selected__box::after {
+  border-top-color: #fff;
+  bottom: 0;
+}
+
+.selected__box.active::before {
+  transform: translate(10px, 10px) rotate(90deg);
+}
+
+.selected__box.active::after {
+  transform: translate(-10px, -10px) rotate(90deg);
+}
+
+.selected__box .selected {
+  width: 100%;
+}
+
+.select__lists {
+  width: 100%;
+  max-height: 0;
+  border-radius: 5px;
+  display: flex;
+  overflow-y: scroll;
+  position: absolute;
+  z-index: 5;
+  top: 45px;
+  background-color: #444;
+  flex-direction: column;
+  transition: all .3s;
+  scrollbar-width: thin;
+  scrollbar-color: #111 #666;
+}
+
+.select__lists.active {
+  max-height: 300px;
+}
+
+.select__lists::-webkit-scrollbar {
+  width: 8px;
+  background-color: #666;
+}
+
+.select__lists::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #111;
+}
+
+.select__lists--item {
+  padding: 10px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.select__lists--item.active {
+  background-color: #222;
+}
+
+.select__lists--item:hover {
+  background-color: #222;
+}
+
+/* custom select box end */
+
+/* birthday calender start */
+
+.birthday__calender {
+  margin: 30px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.calender__item {
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  background-color: #008b8b;
+  color: #fff;
+  flex: 1 0 30%;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.birthday__calender .calender__heading {
+  padding: 0 0 5px 0;
+  border-bottom: 2px solid #222;
+  color: #222;
+  filter: drop-shadow(0 0 5px #fff);
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.calender__user {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.calender__user--box {
+  padding: 5px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+}
+
+/* birthday calender end */
+
+/*=================================
+  main styling ends here
+=================================*/
+
+/*media query starts*/
+/*media query for 995px starts here*/
+@media only screen and (max-width: 995px) {
+
+
+
+}  
